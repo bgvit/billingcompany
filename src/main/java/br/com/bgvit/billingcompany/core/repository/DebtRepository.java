@@ -12,5 +12,5 @@ import java.util.List;
 public interface DebtRepository extends JpaRepository<DebtEntity, Integer> {
 
     @Query("SELECT d FROM DebtEntity d LEFT JOIN FETCH d.borrower WHERE d.borrower.cpf = :cpf")
-    List<DebtEntity> findDebitsByBorrowerCpf(@Param("cpf") String cpf);
+    List<DebtEntity> findDebtsByBorrowerCpf(@Param("cpf") String cpf);
 }

@@ -5,6 +5,8 @@ import br.com.bgvit.billingcompany.core.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CompanyService {
 
@@ -13,5 +15,9 @@ public class CompanyService {
 
     public CompanyEntity save(CompanyEntity company) {
         return companyRepository.save(company);
+    }
+
+    public List<CompanyEntity> getCompanies() {
+        return companyRepository.findAll();
     }
 }

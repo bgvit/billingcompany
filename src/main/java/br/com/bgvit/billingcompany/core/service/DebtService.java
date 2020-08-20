@@ -2,6 +2,7 @@ package br.com.bgvit.billingcompany.core.service;
 
 import br.com.bgvit.billingcompany.core.dto.DebtDTO;
 import br.com.bgvit.billingcompany.core.entity.DebtEntity;
+import br.com.bgvit.billingcompany.core.mapper.DebtMapper;
 import br.com.bgvit.billingcompany.core.repository.DebtRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,19 +21,8 @@ public class DebtService {
     }
 
     public List<DebtDTO> findDebitsByBorrowerCpf(String cpf) {
-        return debtToDebtDTO(debtRepository.findDebitsByBorrowerCpf(cpf));
+        List<DebtEntity> debtEntities = debtRepository.findDebtsByBorrowerCpf(cpf);
+        return DebtMapper.toDebtDTO(debtEntities);
     }
 
-    public List<DebtDTO> debtToDebtDTO(List<DebtEntity> debts) {
-        List<DebtDTO> debtsDTO = new ArrayList<DebtDTO>();
-
-        for (DebtEntity debt : debts) {
-            debtsDTO.add(new DebtDTO(debt.getBorrower().getName(),
-                    debt.getCompany().getFantasyName(),
-                    debt.getValue())
-            );
-        }
-
-        return debtsDTO;
     }
-}
