@@ -1,15 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http:www.thymeleaf.org">
 <head>
-    <title>Projetinho</title>
+    <th:block th:insert="~{/fragments/menu :: head}"></th:block>
+    <th:block th:insert="~{/fragments/menu :: link}"></th:block>
 </head>
-
 <body>
-    <div>
-
-        <button>Send</button>
+<div class="container" style="height: 100vh;">
+    <div class="row d-flex justify-content-center align-items-center">
+        <form class="content-form" th:action="@{/debts}"  method="POST">
+            <h2 class="text-center">Digite o seu CPF</h2>
+            <input type="text" name="cpf" class="form-control input-sm" autofocus="autofocus" placeholder="Informe o nome" maxlength="50"/>
+            <div align="center">
+                <a class="btn btn-sm btn-default">Cancelar</a>
+                <button type="submit" class="btn btn-sm btn-primary">Enviar</button>
+            </div>
+        </form>
     </div>
+</div>
+<th:block th:insert="~{/fragments/menu :: script}"></th:block>
 </body>
 
+<!--<script>-->
+<!--    document.getElementById("sendCPF").addEventListener("click", mountURL);-->
+<!--    function mountURL(){-->
+<!--        console.log("OI");-->
+<!--        window.location = "http://localhost:8080/debts/listDebts?cpf="+$('#cpf').val();-->
+<!--    }-->
+<!--    $(document).ready(function () {-->
+<!--        $('#sendCPF').click(function(){-->
+<!--            //alert("esta aqui" + $('#cpf').val());-->
+<!--            //window.location = "http://test?myid=" + myid;-->
+<!--            console.log("OI");-->
+<!--            window.location = "http://localhost:8080/debts/listDebts?cpf="+$('#cpf').val();-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 </html>

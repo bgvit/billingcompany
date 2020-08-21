@@ -5,15 +5,13 @@ import br.com.bgvit.billingcompany.core.service.CompanyService;
 import br.com.bgvit.billingcompany.core.service.DebtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
 @Controller
-@RequestMapping
+@RequestMapping("/debts")
 public class DebtController {
 
     @Autowired
@@ -29,11 +27,11 @@ public class DebtController {
         return mv;
     }
 
-    @GetMapping("/debts/{companyId}/{cpf}")
-    public ModelAndView getDebtsByBorrowerCpf(@PathVariable("cpf") String cpf,
-                                              @PathVariable("companyId") Integer companyId){
-        ModelAndView mv = new ModelAndView("/list-all-debts.html");
-        mv.addObject();
+    @PostMapping
+    public ModelAndView getDebtsByBorrowerCpf(@RequestBody String cpf){
+        String cpf_renew = cpf.replace("cpf=","");
+        ModelAndView mv = new ModelAndView("debts/list-all-debts");
+        mv.addObject("debts", debtService.findDebitsByBorrowerCpf(cpf_renew));
       return mv;
     }
 }

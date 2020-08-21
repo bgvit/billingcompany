@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:fragment="header">
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset-8"/>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" type="text/css" th:href="@{/4/superhero/bootstrap.css}" media="screen"/>
+        <link rel="stylesheet" type="text/css" th:href="@{/_assets/css/custom.min.css}"/>
+
+    </div>
+</head>
+<body>
+<div th:fragment="menu" class="bs-component">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Company</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link">Item 1</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+        </div>
+    </nav>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="@{/_vendor/popper.js/dist/umd/popper.min.js}"></script>
+<script src="@{/_vendor/bootstrap/dist/js/bootstrap.min.js}"></script>
+<script src="@{/_assets/js/custom.js}"></script>
+</body>
+</html>

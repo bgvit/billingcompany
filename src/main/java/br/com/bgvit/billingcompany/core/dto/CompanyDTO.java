@@ -16,3 +16,4 @@ public class CompanyDTO {
         this.fantasyName = fantasyName;
     }
 }
+//TODO: Implementar paymentType: Descrição, Tipo de pagamento = Porcentagem, Parcelado, Valor_calculado
