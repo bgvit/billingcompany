@@ -9,10 +9,11 @@ import java.math.BigDecimal;
 @ToString
 public class DebtDTO {
 
-    public DebtDTO(String borrowerName, String companyFantasyName, BigDecimal value) {
+    public DebtDTO(String borrowerName, String companyFantasyName, BigDecimal value, Integer companyId) {
         this.borrowerName = borrowerName;
         this.companyFantasyName = companyFantasyName;
         this.debtValue = value;
+        this.companyId = companyId;
     }
 
     @Getter
@@ -26,4 +27,8 @@ public class DebtDTO {
     @Getter
     @Setter
     private BigDecimal debtValue;
+
+    @Getter
+    @Setter
+    private Integer companyId;
 }

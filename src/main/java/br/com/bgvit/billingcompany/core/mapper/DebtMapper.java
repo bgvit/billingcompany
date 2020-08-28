@@ -14,7 +14,7 @@ public class DebtMapper {
         for (DebtEntity debt : debts) {
             debtsDTO.add(new DebtDTO(debt.getBorrower().getName(),
                     debt.getCompany().getFantasyName(),
-                    debt.getValue())
+                    debt.getValue(), debt.getCompany().getId())
             );
         }
         return debtsDTO;

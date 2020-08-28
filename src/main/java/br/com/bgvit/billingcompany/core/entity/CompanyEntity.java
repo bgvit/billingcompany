@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -21,4 +22,8 @@ public class CompanyEntity implements Serializable {
     @Setter
     private String fantasyName;
 
+    @OneToMany
+    @Getter
+    @Setter
+    List<PaymentTypeEntity> paymentTypesEntities;
 }

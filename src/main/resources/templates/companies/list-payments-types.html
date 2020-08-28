@@ -10,25 +10,23 @@
     <div th:block th:insert="~{/fragments/menu :: menu}"></div>
     <div class="panel-default">
         <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4">Debts List</h1>
+            <h1 class="h4 text-gray-900 mb-4">Tipo de Pagamento</h1>
         </div>
         <div class="panel-body">
             <div class="table-responsive">
                 <table class="table table-sm table-striped table-hover table-bordered">
                     <thead>
                     <tr>
-                        <th>NOME</th>
-                        <th>EMPRESA</th>
+                        <th>DESCRIÇÃO</th>
+                        <th>TIPO DO VALOR</th>
                         <th>VALOR</th>
-                        <th>AÇÃO</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="debt:${debts}">
-                        <td th:text="${debt.borrowerName}"></td>
-                        <td th:text="${debt.companyFantasyName}"></td>
-                        <td th:text="${debt.debtValue}"></td>
-                        <td><a th:href="@{company/paymentsTypes/{id}(id=${debt.companyId})}">Clique Aqui</a></td>
+                    <tr th:each="paymentType:${company.paymentTypesDTO}">
+                        <td th:text="${paymentType.description}"></td>
+                        <td th:text="${paymentType.type}"></td>
+                        <td th:text="${paymentType.value}"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -36,11 +34,6 @@
         </div>
 
     </div>
-<!--    <a class="btn btn-sm btn-success" th:href="@{/aluno/cadastrar}">CADASTRAR NOVO ALUNO</a>-->
+    <!--    <a class="btn btn-sm btn-success" th:href="@{/aluno/cadastrar}">CADASTRAR NOVO ALUNO</a>-->
     <th:block th:insert="~{/fragments/footer :: footer}"></th:block>
 </div>
-
-
-
-</body>
-</html>

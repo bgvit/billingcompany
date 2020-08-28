@@ -4,9 +4,11 @@ import br.com.bgvit.billingcompany.core.dto.DebtDTO;
 import br.com.bgvit.billingcompany.core.entity.BorrowerEntity;
 import br.com.bgvit.billingcompany.core.entity.CompanyEntity;
 import br.com.bgvit.billingcompany.core.entity.DebtEntity;
+import br.com.bgvit.billingcompany.core.entity.PaymentTypeEntity;
 import br.com.bgvit.billingcompany.core.service.BorrowerService;
 import br.com.bgvit.billingcompany.core.service.CompanyService;
 import br.com.bgvit.billingcompany.core.service.DebtService;
+import br.com.bgvit.billingcompany.core.service.PaymentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -28,6 +30,9 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     DebtService debtService;
 
+    @Autowired
+    PaymentTypeService paymentTypeService;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
 
@@ -48,10 +53,33 @@ public class Init implements ApplicationListener<ContextRefreshedEvent> {
         borrower3.setCpf("333333333333333");
         borrowerService.save(borrower3);
 
+        //        ###### PAYMENTSTYPES ######
+
+        PaymentTypeEntity paymentTypeEntity1 = new PaymentTypeEntity();
+        paymentTypeEntity1.setType("%");
+        paymentTypeEntity1.setDescription("Pagamento a vista tem 10% de desconto");
+        paymentTypeEntity1.setValue(new BigDecimal(10));
+        paymentTypeService.save(paymentTypeEntity1);
+
+        PaymentTypeEntity paymentTypeEntity2 = new PaymentTypeEntity();
+        paymentTypeEntity2.setType("/");
+        paymentTypeEntity2.setDescription("pagamento parcelado em 5 vezes");
+        paymentTypeEntity2.setValue(new BigDecimal(5));
+        paymentTypeService.save(paymentTypeEntity2);
+
+        List<PaymentTypeEntity> paymentTypeEntities = new ArrayList<>();
+        paymentTypeEntities.add(paymentTypeEntity1);
+        paymentTypeEntities.add(paymentTypeEntity2);
+        for (PaymentTypeEntity pay : paymentTypeEntities) {
+            System.out.println(pay.getDescription());
+        }
+
+
 //        ###### COMPANIES ######
 
         CompanyEntity company = new CompanyEntity();
         company.setFantasyName("Lojas Renner");
+        company.setPaymentTypesEntities(paymentTypeEntities);
         companyService.save(company);
 
         CompanyEntity company2 = new CompanyEntity();
